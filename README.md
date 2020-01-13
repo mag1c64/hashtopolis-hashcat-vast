@@ -12,7 +12,7 @@ In order to fully utilize this container you'll need the following
 Development branch `git clone -b current-dev --single-branch https://github.com/s3inlc/hashtopolis.git`
 * [hashtopolis-agent](https://github.com/s3inlc/hashtopolis-agent-python/) Development branch `git clone -b current-dev --single-branch https://github.com/s3inlc/hashtopolis-agent-python.git` requires building but we have a script for that.
 * [vast.ai account](https://vast.ai/)
-* [hashcat beta](https://hashcat.net/beta/)
+* [hashcat beta](https://hashcat.net/beta/) NOTE: The binaries in the BETA build are named hashcat.bin and hashcat.exe and not hashcat64.*
 
 ### Usage and Information
 
@@ -36,7 +36,7 @@ We want `whitelist` this error in hashtopolis's server settings, so enter `clGet
 
 Cron this script locally to periodically update the you hashtopolis database every 1 minute, to set new agents trusted.
 ```
-echo mysql -D your_hashtopolis_db -e \"UPDATE Agent SET isTrusted = '1'\" > set_trust.sh
+echo mysql -D your_hashtopolis_db -e \"UPDATE Agent SET isTrusted = '1'\" > set_trust.sh && chmod +x set_trust.sh
 ```
 crontab -e
 
