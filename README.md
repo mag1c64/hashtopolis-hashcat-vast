@@ -28,13 +28,13 @@ This container takes the pain out of manually checking boxes and adding in addit
 
 ### Hashtopolis Modifications
 
-Each time you register an agent you need to manually update the `Agent Trust Status` and at the moment because you'll receive HC error `clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR` due to OpenCL requirements.
+Each time you register an agent you need to manually update the `Agent Trust Status` and you'll receive HC error `clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR` due to OpenCL requirements, but we can fix this within hashtopolis developement branch *new_feature*
 
 Hashcat itself will ignore this error and continue with CUDA platform but in hashtopolis's case it will take the error as fatal and halt because by default the agent is set to be deactivated on any errors returned by HC.
 
-We want `whitelist` this error in hashtopolis's server settings, so enter `clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR` on page config.php where it say `Ignore error messages from crackers which contain given strings (multiple values separated by comma)`
+We want `whitelist` this error in hashtopolis's server settings, so enter `clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR` in Server Settings page `config.php` where it says `Ignore error messages from crackers which contain given strings (multiple values separated by comma)`
 
-Cron this script locally to periodically update the you hashtopolis database every 1 minute, to set new agents trusted.
+Cron this script locally to periodically update the your hashtopolis database every 1 minute or so to set new agents as trusted.
 ```
 echo mysql -D your_hashtopolis_db -e \"UPDATE Agent SET isTrusted = '1'\" > set_trust.sh && chmod +x set_trust.sh
 ```
@@ -47,9 +47,11 @@ crontab -e
 You also need to have reusable voucher codes.
 See `https://{your_domain}/config.php?view=5` and checkbox to allow vouchers to be use multiple times.
 
-#### vast.ai onstart script
+#### vast.ai
 
-your onstart.sh script should be written out as so
+Edit `Image & Config` and use `milz0/hashtopolis-hashcat-vast` as your custom image
+
+your onstart-script should be written out as so in vast.ai.
 ```
 cd htpclient
 python3 hashtopolis.zip --url {server} --voucher {voucher_id}
