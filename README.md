@@ -12,7 +12,7 @@ In order to fully utilize this container you'll need the following
 Development branch `git clone -b current-dev --single-branch https://github.com/s3inlc/hashtopolis.git`
 * [hashtopolis-agent](https://github.com/s3inlc/hashtopolis-agent-python/) Development branch `git clone -b current-dev --single-branch https://github.com/s3inlc/hashtopolis-agent-python.git` requires building but we have a script for that.
 * [vast.ai account](https://vast.ai/)
-* [hashcat beta](https://hashcat.net/beta/) NOTE: The binaries in the BETA build are named hashcat.bin and hashcat.exe and not hashcat64.*
+* [hashcat beta](https://hashcat.net/beta/) `NOTE: The binaries in the BETA build are named hashcat.bin and hashcat.exe and not hashcat64.*`
 
 ### Usage and Information
 
@@ -32,7 +32,7 @@ Each time you register an agent you need to manually update the `Agent Trust Sta
 
 Hashcat itself will ignore this error and continue with CUDA platform but in hashtopolis's case it will take the error as fatal and halt because by default the agent is set to be deactivated on any errors returned by HC.
 
-We want `whitelist` this error in hashtopolis's server settings, so enter `clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR`
+We want `whitelist` this error in hashtopolis's server settings, so enter `clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR` on page config.php where it say `Ignore error messages from crackers which contain given strings (multiple values separated by comma)`
 
 Cron this script locally to periodically update the you hashtopolis database every 1 minute, to set new agents trusted.
 ```
