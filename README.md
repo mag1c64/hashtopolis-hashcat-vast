@@ -28,7 +28,7 @@ This container takes the pain out of manually checking boxes and adding in addit
 
 ### Hashtopolis Modifications
 
-Each time you register an agent you need to manually update the `Agent Trust Status` and you'll receive HC error `clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR` due to OpenCL requirements, but we can fix this within hashtopolis developement branch *new_feature*
+Each time you register an agent you need to manually update the `Agent Trust Status` and you'll receive HC error `clGetPlatformIDs(): CL_PLATFORM_NOT_FOUND_KHR` due to OpenCL requirements, but we can fix this within hashtopolis developement branch with the new whitelist feature for errors.
 
 Hashcat itself will ignore this error and continue with CUDA platform but in hashtopolis's case it will take the error as fatal and halt because by default the agent is set to be deactivated on any errors returned by HC.
 
