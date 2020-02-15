@@ -3,7 +3,6 @@ FROM nvidia/cuda:10.0-devel-ubuntu18.04
 RUN apt update && apt install -y --no-install-recommends \
   zip \
   git \
-  wget \
   python3 \
   python3-psutil \
   python3-requests \
@@ -15,4 +14,8 @@ CMD mkdir /root/htpclient
 
 WORKDIR /root/htpclient
 
-RUN wget https://github.com/MilzoCSP/hashtopolis-hashcat-vast/raw/master/hashtopolis.zip
+RUN git clone -b current-dev --single-branch https://github.com/s3inlc/hashtopolis-agent-python.git && \
+  cd hashtopolis-agent-python && \
+  ./build.sh && \
+  mv hashtopolis.zip ../ && \
+  cd ../ && rm -R hashtopolis-agent-python
