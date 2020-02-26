@@ -3,6 +3,8 @@
 
 This container is useful for quickly! deploying lots of agents from vast.ai onto your hashtopolis server with single clicks for an ondemand hash cracking session.
 
+You should be familiar with the Prerequisities, this isn't a step-by-step guide as such.
+
 ### Prerequisities
 
 
